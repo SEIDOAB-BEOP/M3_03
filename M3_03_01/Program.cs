@@ -7,7 +7,17 @@ namespace BOOPM3_03_01
     {
 		struct RectangleStruct
 		{
-			public double Width { get; set; }
+            public double d1 { get; set; }
+            public double d2 { get; set; }
+            public double d3 { get; set; }
+            public double d4 { get; set; }
+
+			public decimal m1 { get; set; }
+            public decimal m2 { get; set; }
+            public decimal m3 { get; set; }
+            public decimal m4 { get; set; }
+
+            public double Width { get; set; }
 			public double Height { get; set; }
 			public double Diagonal => Math.Sqrt(Width * Width + Height * Height);
 
@@ -19,6 +29,16 @@ namespace BOOPM3_03_01
 		}
 		class RectangleClass
 		{
+            public double d1 { get; set; }
+            public double d2 { get; set; }
+            public double d3 { get; set; }
+            public double d4 { get; set; }
+
+            public decimal m1 { get; set; }
+            public decimal m2 { get; set; }
+            public decimal m3 { get; set; }
+            public decimal m4 { get; set; }
+
 			public double Width { get; set; }
 			public double Height { get; set; }
 			public double Diagonal => Math.Sqrt(Width * Width + Height * Height);
@@ -32,22 +52,32 @@ namespace BOOPM3_03_01
 
 		static void Main(string[] args)
 		{
-			const long arraySize = 10_000_000;
+			const long arraySize = 10_000;
 			long size1 = GC.GetTotalMemory(true);
 
-			//Roughly 1 600 000 bytes
-			RectangleStruct[] arrayStruct = new RectangleStruct[10_000_000];
+			//Roughly 
+			RectangleStruct[] arrayStruct = new RectangleStruct[arraySize];
+			for (int i = 0; i < arraySize; i++)
+			{
+				arrayStruct[i] = new RectangleStruct(5,5);
+            }
 
 			long size2 = GC.GetTotalMemory(true);
-			Console.WriteLine($"Rough size of {nameof(arrayStruct)} immediatly allocated estimate: {2 * sizeof(double) * arraySize:N0} bytes");
+			//Console.WriteLine($"Rough size of {nameof(arrayStruct)} immediatly allocated estimate: {2 * sizeof(double) * arraySize:N0} bytes");
 			Console.WriteLine($"Rough size of {nameof(arrayStruct)} immediatly allocated by GC:  {size2-size1:N0} bytes");
 			Console.WriteLine();
 
-			//Roughly 800 000 bytes
-			RectangleClass[] arrayClass = new RectangleClass[10_000_000];
+			//Roughly 
+			RectangleClass[] arrayClass = new RectangleClass[arraySize];
+
+            for (int i = 0; i < arraySize; i++)
+            {
+                arrayClass[i] = new RectangleClass(5, 5);
+            }
+
 			long size3 = GC.GetTotalMemory(true);
 			
-			Console.WriteLine($"Rough size of {nameof(arrayClass)} immediatly allocated estimate: {sizeof(long) * arraySize:N0} bytes");
+			//Console.WriteLine($"Rough size of {nameof(arrayClass)} immediatly allocated estimate: {sizeof(long) * arraySize:N0} bytes");
 			Console.WriteLine($"Rough size of {nameof(arrayClass)} immediatly allocated by GC:  {size3 - size2:N0} bytes");
 		}
 	}
