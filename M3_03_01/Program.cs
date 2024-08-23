@@ -57,10 +57,12 @@ namespace BOOPM3_03_01
 
 			//Roughly 
 			RectangleStruct[] arrayStruct = new RectangleStruct[arraySize];
+			
 			for (int i = 0; i < arraySize; i++)
 			{
 				arrayStruct[i] = new RectangleStruct(5,5);
             }
+			
 
 			long size2 = GC.GetTotalMemory(true);
 			//Console.WriteLine($"Rough size of {nameof(arrayStruct)} immediatly allocated estimate: {2 * sizeof(double) * arraySize:N0} bytes");
@@ -69,12 +71,12 @@ namespace BOOPM3_03_01
 
 			//Roughly 
 			RectangleClass[] arrayClass = new RectangleClass[arraySize];
-
+			
             for (int i = 0; i < arraySize; i++)
             {
                 arrayClass[i] = new RectangleClass(5, 5);
             }
-
+			
 			long size3 = GC.GetTotalMemory(true);
 			
 			//Console.WriteLine($"Rough size of {nameof(arrayClass)} immediatly allocated estimate: {sizeof(long) * arraySize:N0} bytes");
