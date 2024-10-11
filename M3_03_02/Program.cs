@@ -4,7 +4,7 @@ namespace BOOPM3_03_02
 {
     class Program
     {
-		readonly struct immutableRectangleStruct
+		struct immutableRectangleStruct
 		{
 			public double Width { get; init; }
 			public double Height { get; init; }
