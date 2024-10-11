@@ -18,6 +18,9 @@ namespace BOOPM3_03_03
             (double width, double height) = rr1;
             Console.WriteLine(width);
             Console.WriteLine(height);
+
+            rr2 = rr1 with { Height = 25};
+            rr2 = rr1 with { Width = 25};
         }
     }
 }
