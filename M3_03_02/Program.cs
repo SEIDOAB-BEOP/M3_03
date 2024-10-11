@@ -6,8 +6,8 @@ namespace BOOPM3_03_02
     {
 		readonly struct immutableRectangleStruct
 		{
-			public readonly double Width { get; init; }
-			public readonly double Height { get; init; }
+			public double Width { get; init; }
+			public double Height { get; init; }
 
 			public static bool operator ==(immutableRectangleStruct r1, immutableRectangleStruct r2) => Equals(r1, r2);
 			public static bool operator !=(immutableRectangleStruct r1, immutableRectangleStruct r2) => !Equals(r1, r2);
@@ -18,10 +18,13 @@ namespace BOOPM3_03_02
 			{ 
 				(Width, Height) = (width, height);
 			}
-			public immutableRectangleStruct GetQuad()
+			public immutableRectangleStruct SetWith (double width)
 			{
-				var result = new immutableRectangleStruct { Height = 2 * this.Height, Width = 2 * this.Width };
-				return result;
+				return new immutableRectangleStruct { Width = width, Height = this.Height}; 
+			}
+			public immutableRectangleStruct SetHeight(double height)
+			{
+				return new immutableRectangleStruct { Width = this.Width, Height = height}; 
 			}
 			public void Deconstruct(out double width, out double height)
 			{
@@ -40,11 +43,15 @@ namespace BOOPM3_03_02
 			public static bool operator !=(immutableRectangleClass r1, immutableRectangleClass r2) => !Equals(r1, r2);
 			public override string ToString() => 
 				$"{nameof(immutableRectangleClass)} {{ {nameof(Width)}={Width}, {nameof(Height)}={Height} }}";
-			public immutableRectangleClass GetQuad()
+			public immutableRectangleStruct SetWith (double width)
 			{
-				var result = new immutableRectangleClass(this.Width *2, this.Height*2);
-				return result;
+				return new immutableRectangleStruct { Width = width, Height = this.Height}; 
 			}
+			public immutableRectangleStruct SetHeight(double height)
+			{
+				return new immutableRectangleStruct { Width = this.Width, Height = height}; 
+			}
+
 
 			public immutableRectangleClass() { }
 			public immutableRectangleClass(double width, double height) => (Width, Height) = (width, height);
@@ -70,7 +77,8 @@ namespace BOOPM3_03_02
 			Console.WriteLine(irs1);
 			Console.WriteLine(irs1 == irs2);
 			Console.WriteLine(irs1 == irs3);
-			Console.WriteLine(irs1.GetQuad());
+			Console.WriteLine(irs1.SetHeight(25));
+			Console.WriteLine(irs1.SetWith(25));
 			Console.WriteLine();
 
 			var irc1 = new immutableRectangleClass { Width = 400, Height = 100 };
@@ -79,7 +87,8 @@ namespace BOOPM3_03_02
 			Console.WriteLine(irc1);
 			Console.WriteLine(irc1 == irc2);
 			Console.WriteLine(irc1 == irc3);
-			Console.WriteLine(irc1.GetQuad());
+			Console.WriteLine(irc1.SetHeight(25));
+			Console.WriteLine(irc1.SetWith(25));
 		}
 	}
 }

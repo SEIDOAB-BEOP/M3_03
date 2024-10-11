@@ -7,15 +7,15 @@ namespace BOOPM3_03_01
     {
 		struct RectangleStruct
 		{
-            public double d1 { get; set; }
-            public double d2 { get; set; }
-            public double d3 { get; set; }
-            public double d4 { get; set; }
+            // public double d1 { get; set; }
+            // public double d2 { get; set; }
+            // public double d3 { get; set; }
+            // public double d4 { get; set; }
 
-			public decimal m1 { get; set; }
-            public decimal m2 { get; set; }
-            public decimal m3 { get; set; }
-            public decimal m4 { get; set; }
+			// public decimal m1 { get; set; }
+            // public decimal m2 { get; set; }
+            // public decimal m3 { get; set; }
+            // public decimal m4 { get; set; }
 
             public double Width { get; set; }
 			public double Height { get; set; }
@@ -29,15 +29,15 @@ namespace BOOPM3_03_01
 		}
 		class RectangleClass
 		{
-            public double d1 { get; set; }
-            public double d2 { get; set; }
-            public double d3 { get; set; }
-            public double d4 { get; set; }
+            // public double d1 { get; set; }
+            // public double d2 { get; set; }
+            // public double d3 { get; set; }
+            // public double d4 { get; set; }
 
-            public decimal m1 { get; set; }
-            public decimal m2 { get; set; }
-            public decimal m3 { get; set; }
-            public decimal m4 { get; set; }
+            // public decimal m1 { get; set; }
+            // public decimal m2 { get; set; }
+            // public decimal m3 { get; set; }
+            // public decimal m4 { get; set; }
 
 			public double Width { get; set; }
 			public double Height { get; set; }
@@ -58,10 +58,10 @@ namespace BOOPM3_03_01
 			//Roughly 
 			RectangleStruct[] arrayStruct = new RectangleStruct[arraySize];
 			
-			for (int i = 0; i < arraySize; i++)
-			{
-				arrayStruct[i] = new RectangleStruct(5,5);
-            }
+			// for (int i = 0; i < arraySize; i++)
+			// {
+			// 	arrayStruct[i] = new RectangleStruct(5,5);
+            // }
 			
 
 			long size2 = GC.GetTotalMemory(true);
@@ -72,10 +72,10 @@ namespace BOOPM3_03_01
 			//Roughly 
 			RectangleClass[] arrayClass = new RectangleClass[arraySize];
 			
-            for (int i = 0; i < arraySize; i++)
-            {
-                arrayClass[i] = new RectangleClass(5, 5);
-            }
+            // for (int i = 0; i < arraySize; i++)
+            // {
+            //     arrayClass[i] = new RectangleClass(5, 5);
+            // }
 			
 			long size3 = GC.GetTotalMemory(true);
 			
